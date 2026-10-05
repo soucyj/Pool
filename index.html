@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f1eb">
+    <title>Le Pool — Québec 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="data.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Le Pool, accueil">
+        <span class="brand-mark" aria-hidden="true">P.</span>
+        <span>LE POOL <span class="brand-divider">/</span> QUÉBEC 2026</span>
+      </a>
+      <div class="topbar-right">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span>ÉLECTION GÉNÉRALE</span>
+        <span class="topbar-date">05.10.26</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> LE GRAND POOL ÉLECTORAL</p>
+          <h1>Qui a vu<br>juste<span class="accent">?</span></h1>
+          <p class="intro-lede">Les prédictions sont faites. Les urnes parleront.<br>Suivez le classement, siège par siège.</p>
+        </div>
+        <div class="election-stamp" aria-label="Élection générale du Québec, 5 octobre 2026">
+          <span class="stamp-top">ÉLECTION GÉNÉRALE</span>
+          <strong>QUÉBEC</strong>
+          <span class="stamp-date">LUNDI · 5 OCTOBRE 2026</span>
+          <span class="stamp-seats"><b>127</b> CIRCONSCRIPTIONS</span>
+        </div>
+      </section>
+
+      <section class="overview" aria-label="Projection actuelle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / LA PROJECTION</p>
+            <h2>Le tableau de bord</h2>
+          </div>
+        </div>
+
+        <div id="data-errors" class="data-errors" role="alert" hidden></div>
+        <div class="summary-strip">
+          <div class="summary-label">
+            <span class="summary-pulse" aria-hidden="true"></span>
+            <span id="reference-status">EN ATTENTE DES DONNÉES</span>
+          </div>
+          <p id="reference-updated">Ajoutez une projection pour lancer le classement.</p>
+          <a class="source-link" href="https://qc125.com/" target="_blank" rel="noreferrer">SOURCE : QC125 ↗</a>
+        </div>
+
+        <div id="seat-cards" class="seat-grid" aria-live="polite"></div>
+        <div id="projection-empty" class="empty-state">
+          <span class="empty-icon" aria-hidden="true">↗</span>
+          <div>
+            <strong>Aucune donnée pour cette référence</strong>
+            <p>Ajoutez une projection dans data.js.</p>
+          </div>
+        </div>
+        <div id="seat-majority" class="majority-note" hidden>
+          <span class="majority-rule" aria-hidden="true"></span>
+          <span>SEUIL DE MAJORITÉ : <b>64 SIÈGES</b></span>
+        </div>
+      </section>
+
+      <section class="standings">
+        <div class="section-heading standings-heading">
+          <div>
+            <p class="eyebrow">02 / LES JOUEURS</p>
+            <h2>Le classement</h2>
+          </div>
+          <span id="player-count" class="count-pill">0 PARTICIPANT</span>
+        </div>
+        <p class="scoring-note">Classé par norme L1 (somme des écarts absolus de sièges, le plus petit mène); la norme L2 départage les égalités.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" class="rank-col">RANG</th>
+                <th scope="col">PARTICIPANT</th>
+                <th scope="col">PRÉDICTIONS</th>
+                <th scope="col" class="score-col">L1</th>
+                <th scope="col" class="score-col">L2</th>
+              </tr>
+            </thead>
+            <tbody id="standings-body"></tbody>
+          </table>
+          <div id="standings-empty" class="table-empty">
+            <span class="empty-icon" aria-hidden="true">＋</span>
+            <strong>Le pool est prêt à démarrer.</strong>
+            <p>Les prédictions apparaîtront ici.</p>
+          </div>
+        </div>
+        <p class="table-footnote">L1 = Σ |prédit − projeté|; L2 = √Σ (prédit − projeté)². Calculés sur la dernière mise à jour.</p>
+      </section>
+
+      <section class="evolution">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 / LA SOIRÉE</p>
+            <h2>Évolution de l’écart</h2>
+          </div>
+        </div>
+        <p class="scoring-note">Écart L1 de chaque participant à chaque mise à jour. Le premier point correspond à la première projection (Qc125).</p>
+        <div id="evolution-chart" class="chart-wrap"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="https://qc125.com/" target="_blank" rel="noreferrer">QC125 ↗</a>
+      <span>UN POOL ENTRE AMIS · QUÉBEC 2026</span>
+      <span>FAIT POUR LE PLAISIR DU SCRUTIN.</span>
+    </footer>
+  </body>
+</html>
